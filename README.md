@@ -25,7 +25,7 @@ A secure, scalable REST API built with **Laravel 11** and **PHP 8.2+**. This sys
 
 ### 1. Clone & Install
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/MVENKATESH786/broomees-backend.git
 cd broomees-backend
 composer install
 
