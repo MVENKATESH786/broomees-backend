@@ -1,0 +1,118 @@
+{
+    "info": {
+        "_postman_id": "broomees-backend-task",
+        "name": "Broomees Backend API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth - Get Token",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/auth/token",
+                    "host": ["{{base_url}}"],
+                    "path": ["auth", "token"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"test_user\", \"age\": 25}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/users",
+                    "host": ["{{base_url}}"],
+                    "path": ["users"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get User Details",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/users/:id",
+                    "host": ["{{base_url}}"],
+                    "path": ["users", ":id"],
+                    "variable": [{ "key": "id", "value": "UUID_HERE" }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Add Friend (Mutual)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"friend_id\": \"FRIEND_UUID_HERE\"}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/users/:id/relationships",
+                    "host": ["{{base_url}}"],
+                    "path": ["users", ":id", "relationships"],
+                    "variable": [{ "key": "id", "value": "UUID_HERE" }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "System Metrics",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/metrics/reputation",
+                    "host": ["{{base_url}}"],
+                    "path": ["metrics", "reputation"]
+                }
+            },
+            "response": []
+        }
+    ]
+}
